@@ -54,6 +54,13 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!-- REST Assured: API Test(s) -->
+		<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>rest-assured</artifactId>
+			<scope>test</scope>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -72,8 +79,36 @@
 				</configuration>
 			</plugin>
 
+			<!-- JUnit: "Integration Tests" Default | Class: *IT.java | mvn verify -->
+			<plugin>
+				<artifactId>maven-failsafe-plugin</artifactId>
+			</plugin>
+			
+			<!-- JaCoCo: Java Code Coverage -->
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.8.0</version>
+				<!-- <version>0.8.5</version> -->
+				<executions>
+					<execution>
+						<id>jacoco-initialize</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>jacoco-report</id>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>					
+				</executions>
+			</plugin>
+
 		</plugins>
 	</build>
 
 </project>
+
 
